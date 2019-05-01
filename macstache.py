@@ -63,22 +63,6 @@ dataFile.close()
 context = json.loads(dataString)
 
 
-# Replace occurrences of file references with file's content
-for key, value in context.items():
-    if value[0] == "@":
-        # Get path for sub file
-        sub = value[1:]
-        subPath = os.path.join(os.path.dirname(dataPath), sub)
-
-        # Read contents of sub file
-        subFile = open(subPath, "r")
-        subString = subFile.read()
-        subFile.close()
-
-        # Replace value with contents of sub file
-        context[key] = subString
-
-
 # Generate output
 output = pystache.render(templateString, context)
 
