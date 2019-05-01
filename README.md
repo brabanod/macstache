@@ -13,7 +13,12 @@ A [Mustache](https://mustache.github.io) command line tool implementation for Ma
 # Installation
 
 ## Pre-Build
-If you only want the command line tool, go to `dist` folder and grab the `macstache` executable. Copy it to a folder, which is part of your `$PATH`. You can drag it into `usr/local/bin` for example. After that, just use the tool by calling `macstache` in the terminal.
+If you only want the command line tool, go to `dist` folder and grab the `macstache` executable. Copy it to a folder, which is part of your `$PATH`, for example `usr/local/bin`. The following commands should install macstache on macOS
+```
+git clone https://github.com/columbbus/macstache.git
+sudo cp macstache/dist/macstache /usr/local/bin/macstache
+```
+After that, just use the tool by calling `macstache` in the terminal.
 
 
 ## Build yourself
