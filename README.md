@@ -36,26 +36,23 @@ After installing macstache (i.e. moving the executable to `/usr/local/bin`), you
 ## Command Line Parameters
 macstache needs 3 files as input, in order to compile the result
 * **Template**: This file contains your template with Mustach tags, such as `{{name}}`
-* **Context**: The context or data file is a `.json` file, which contains the hashes, for example:
-```
-{
-   "name": "John"
-}
-```
-
+* **Context**: The context or data file is a `.json` file, which contains the hashes, for example: `{ "name": "John" }`
 * **Output**: Specify the location, to where macstache should save the compiled output
+
+Options:
+* `-ps`: Activates subfolder replacement for partials (see below for more information)
 
 An example command would look like this:
 ```
-macstache source/index.mustache source/index.json build/index.html
+macstache -ps source/index.mustache source/index.json build/index.html
 ```
 
 
 ## Additional features
 I've included some additional features, that I am missing from the original Mustache.
 
-### Partials subfoldering (*not yet implemented*)
-Partial subfoldering automatically updates the reference to a partial, by putting the correct path in front of it.
+### Partials subfoldering
+Partial subfoldering updates the reference to a partial, by putting the correct path in front of it. Only activated when using `-ps` option.
 
 Say I have the following file tree:
 ```
