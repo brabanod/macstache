@@ -1,6 +1,6 @@
 <br></br>
 <p align="center">
-  <img src="https://github.com/columbbus/macstache/blob/master/resources/macstache.png?raw=true" alt="macstache" height="300"/>
+  <img src="https://github.com/columbbus/macstache/blob/master/resources/macstache.png?raw=true" alt="macstache" width="400"/>
 </p>
 <br></br>
 
