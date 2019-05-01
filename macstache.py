@@ -7,9 +7,40 @@ import json
 
 
 # Check command line arguments
-if len(sys.argv) != 4:
-    print("Invalid arguments, specify TEMPLATE, DATA and OUTPUT file")
+if len(sys.argv) == 2:
+    if (sys.argv[1] == "-h") or (sys.argv[1] == "-help") or (sys.argv[1] == "--help"):
+        print("""
+        
+macstache, Version 0.1, Pascal Braband 2019
+
+To compile, give macstache 3 files in the following order:
+    - Template: contains mustache template
+    - Context: contains mustach hash variables in .json format
+    - Output: location of the file, where output should be saved
+    
+More commands:
+    Type -h for help
+    Type -v for version
+            
+            """)
+        sys.exit(0)
+
+    if (sys.argv[1] == "-v") or (sys.argv[1] == "-version") or (sys.argv[1] == "--version"):
+        print("macstache, Version 0.1, Pascal Braband 2019")
+        sys.exit(0)
+
+    else:
+        print("Invalid arguments, specify TEMPLATE, DATA and OUTPUT file. Type -h for help.")
+        sys.exit(2)
+
+
+elif len(sys.argv) != 4:
+    print("Invalid arguments, specify TEMPLATE, DATA and OUTPUT file. Type -h for help.")
     sys.exit(2)
+
+
+
+
 
 
 # Compose paths
