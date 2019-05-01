@@ -2,6 +2,7 @@ import pystache
 import sys
 import os
 import json
+import argparse
 
 # Location: /usr/local/bin
 
@@ -9,44 +10,23 @@ import json
 
 
 # Check command line arguments
-if len(sys.argv) == 2:
-    if (sys.argv[1] == "-h") or (sys.argv[1] == "-help") or (sys.argv[1] == "--help"):
-        print("""
-        
-macstache, Version 0.1, Pascal Braband 2019
+parser = argparse.ArgumentParser(description="macstache, Version 0.1, Pascal Braband 2019")
 
-To compile, give macstache 3 files in the following order:
-    - Template: contains mustache template
-    - Context: contains mustach hash variables in .json format
-    - Output: location of the file, where output should be saved
-    
-More commands:
-    Type -h for help
-    Type -v for version
-            
-            """)
-        sys.exit(0)
+parser.add_argument("template", type=str, help="File containing mustache template")
+parser.add_argument("data", type=str, help="File containing mustache hash variables in .json format")
+parser.add_argument("output", type=str, help="Location of the file, where output should be saved")
 
-    if (sys.argv[1] == "-v") or (sys.argv[1] == "-version") or (sys.argv[1] == "--version"):
-        print("macstache, Version 0.1, Pascal Braband 2019")
-        sys.exit(0)
+parser.add_argument('-ps', '--partial-subfolder', action='store_true', help='Activate subfolder replacement for partials')
 
-    else:
-        print("Invalid arguments, specify TEMPLATE, DATA and OUTPUT file. Type -h for help.")
-        sys.exit(2)
-
-
-elif len(sys.argv) != 4:
-    print("Invalid arguments, specify TEMPLATE, DATA and OUTPUT file. Type -h for help.")
-    sys.exit(2)
+args = parser.parse_args()
 
 
 
 
 # Compose paths
-templatePathRaw = sys.argv[1]
-dataPathRaw = sys.argv[2]
-outputPathRaw = sys.argv[3]
+templatePathRaw = args.template
+dataPathRaw = args.data
+outputPathRaw = args.output
 
 templatePath = os.path.join(os.getcwd(), templatePathRaw)
 dataPath = os.path.join(os.getcwd(), dataPathRaw)
@@ -64,23 +44,25 @@ dataFile.close()
 
 
 
-# Partial subfoldering
-partialIndex = 0
-while True:
-    partialIndex = templateString.find("{{> ", partialIndex+1)
-    if partialIndex == -1:
-        break
+# Partial subfolder replacement
+if args.partial_subfolder:
+    partialIndex = 0
+    while True:
+        partialIndex = templateString.find("{{> ", partialIndex+1)
+        if partialIndex == -1:
+            break
 
-    # Get path from partial
-    partialStartIndex = partialIndex+4
-    partialEndIndex = templateString.find("}}", partialIndex)
-    partialPath = templateString[partialStartIndex: partialEndIndex]
+        # Get path from partial
+        partialStartIndex = partialIndex+4
+        partialEndIndex = templateString.find("}}", partialIndex)
+        partialPath = templateString[partialStartIndex: partialEndIndex]
 
-    # Compose updated path to partial
-    partialPathNew = os.path.join(os.path.dirname(templatePathRaw), partialPath)
+        # Compose updated path to partial
+        partialPathNew = os.path.join(os.path.dirname(templatePathRaw), partialPath)
 
-    # Update template to include new path
-    templateString = templateString[:partialStartIndex] + partialPathNew + templateString[partialEndIndex:]
+        # Update template to include new path
+        templateString = templateString[:partialStartIndex] + partialPathNew + templateString[partialEndIndex:]
+
 
 
 
