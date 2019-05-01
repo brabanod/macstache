@@ -62,9 +62,7 @@ Say you have an `.html` template an you want to reuse your navigation bar, which
 }
 ```
 
-### Recursive templating
+### Recursive templating (*not implemented yet*)
 The file being loaded from the context file (e.g. `nav.html`) can also be a Mustache template. If this *sub*-template contains a tag like `{{color}}`, then your context file (json) should contain a key value pair for `color`. macstache then first compile this *sub*-template, and then puts it into the context file. If there are no other *sub*-templates, macstache then compiles your primary template.
 
 ***Be careful with infinite loops!***
-
-**THIS FEATURE IS NOT IMPLEMENTED YET**
