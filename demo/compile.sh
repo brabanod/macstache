@@ -1,1 +1,1 @@
-macstache source/main.txt source/main.json build/compiled.txt
+macstache source/index.mustache source/index.json build/index.html
