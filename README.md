@@ -13,7 +13,7 @@
 # Installation
 
 ## Pre-Build
-If you only want the command line tool, go to `dist` folder and grab the `macstache` executable. Copy it to a folder, which is part of your `$PATH`. You can drag it into `usr/local/bin` for example. After that, just user the tool by calling `macstache` in the terminal.
+If you only want the command line tool, go to `dist` folder and grab the `macstache` executable. Copy it to a folder, which is part of your `$PATH`. You can drag it into `usr/local/bin` for example. After that, just use the tool by calling `macstache` in the terminal.
 
 
 ## Build yourself
@@ -30,7 +30,7 @@ pip install pystache
 
 
 # Usage
-After installing macstache (i.e. moving the executable to `/usr/local/bin`), you can start macstache on the terminal by calling `macstache`.
+After installing macstache (i.e. moving the executable to `/usr/local/bin`), you can start macstache on the terminal by calling `macstache`. Look into the `/demo` folder, it contains an example which showcases all features.
 
 
 ## Command Line Parameters
