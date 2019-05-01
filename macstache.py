@@ -6,6 +6,8 @@ import json
 # Location: /usr/local/bin
 
 
+
+
 # Check command line arguments
 if len(sys.argv) == 2:
     if (sys.argv[1] == "-h") or (sys.argv[1] == "-help") or (sys.argv[1] == "--help"):
@@ -41,13 +43,14 @@ elif len(sys.argv) != 4:
 
 
 
-
-
 # Compose paths
-templatePath = os.path.join(os.getcwd(), sys.argv[1])
-dataPath = os.path.join(os.getcwd(), sys.argv[2])
-outputPath = os.path.join(os.getcwd(), sys.argv[3])
+templatePathRaw = sys.argv[1]
+dataPathRaw = sys.argv[2]
+outputPathRaw = sys.argv[3]
 
+templatePath = os.path.join(os.getcwd(), templatePathRaw)
+dataPath = os.path.join(os.getcwd(), dataPathRaw)
+outputPath = os.path.join(os.getcwd(), outputPathRaw)
 
 # Read file content
 templateFile = open(templatePath, "r")
@@ -59,9 +62,30 @@ dataString = dataFile.read()
 dataFile.close()
 
 
-# Convert dataString JSON to dictionary
-context = json.loads(dataString)
 
+
+# Partial subfoldering
+partialIndex = 0
+while True:
+    partialIndex = templateString.find("{{> ", partialIndex+1)
+    if partialIndex == -1:
+        break
+
+    # Get path from partial
+    partialStartIndex = partialIndex+4
+    partialEndIndex = templateString.find("}}", partialIndex)
+    partialPath = templateString[partialStartIndex: partialEndIndex]
+
+    # Compose updated path to partial
+    partialPathNew = os.path.join(os.path.dirname(templatePathRaw), partialPath)
+
+    # Update template to include new path
+    templateString = templateString[:partialStartIndex] + partialPathNew + templateString[partialEndIndex:]
+
+
+
+# Convert JSON dataString to dictionary
+context = json.loads(dataString)
 
 # Generate output
 output = pystache.render(templateString, context)
