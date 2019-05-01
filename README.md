@@ -40,6 +40,7 @@ macstache needs 3 files as input, in order to compile the result
 * **Output**: Specify the location, to where macstache should save the compiled output
 
 Options:
+* `-h`: Display help
 * `-ps`: Activates subfolder replacement for partials (see below for more information)
 
 An example command would look like this:
