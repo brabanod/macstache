@@ -6,7 +6,7 @@
 
 
 # macstache
-[Mustache](https://mustache.github.io) command line tool implementation for Mac written in Python
+A [Mustache](https://mustache.github.io) command line tool implementation for Mac written in Python. Uses `.json` files to read hash values for Mustache.
 
 
 
@@ -47,22 +47,49 @@ macstache needs 3 files as input, in order to compile the result
 
 An example command would look like this:
 ```
-macstache source/index.html source/index.json build/index.html
+macstache source/index.mustache source/index.json build/index.html
 ```
 
 
 ## Additional features
 I've included some additional features, that I am missing from the original Mustache.
 
-### File referencing
-Say you have an `.html` template an you want to reuse your navigation bar, which is saved in `nav.html`. In macstache you can load a file's content in the context file by having the value in this format: `@path/to/file.html`. macstache then replaces the file reference with the content of `file.html`. A context file would look like this:
-```
-{
-   "navbar": "@nav.html"
-}
-```
+### Partials subfoldering (*not yet implemented*)
+Partial subfoldering automatically updates the reference to a partial, by putting the correct path in front of it.
 
-### Recursive templating (*not implemented yet*)
-The file being loaded from the context file (e.g. `nav.html`) can also be a Mustache template. If this *sub*-template contains a tag like `{{color}}`, then your context file (json) should contain a key value pair for `color`. macstache then first compile this *sub*-template, and then puts it into the context file. If there are no other *sub*-templates, macstache then compiles your primary template.
-
-***Be careful with infinite loops!***
+Say I have the following file tree:
+```
+project
+|
+|__ source
+|   |__ index.mustache
+|   |__ index.json
+|   |__ nav.mustache
+|
+|__ build
+|   |__ index.html
+```
+I am in the `/project` folder and want to compile `index.html` using the following command
+```
+macstache source/index.mustache source/index.json build/index.html
+```
+For Mustache to work, a reference in `index.html` to the partial needs to look like this
+```
+{{> source/nav}}
+```
+Since this is inconvenient, because it depends on the overlaying directory structure, I would rather have something like this:
+```
+{{> nav}}
+```
+macstache solves this problem by automatically putting the given folder of the template (in this case `/source`) in front of the partial, so you don't need to worry about the current directory structure. Thus converting
+```
+{{> nav}}
+to
+{{> source/nav}}
+```
+or
+```
+{{> sub/folder/nav}}
+to
+{{> source/sub/folder/nav}}
+```
