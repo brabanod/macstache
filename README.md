@@ -1,5 +1,14 @@
+<br></br>
+<p align="center">
+  <img src="https://github.com/columbbus/macstache/blob/master/resources/macstache.png?raw=true" alt="macstache" height="300"/>
+</p>
+<br></br>
+
+
 # macstache
-Mustache command line tool implementation for Mac written in Python
+[Mustache](https://mustache.github.io) command line tool implementation for Mac written in Python
+
+
 
 # Installation
 ## Pre-Build
@@ -17,3 +26,8 @@ pip install pystache
 ```
 
 
+
+# Usage
+After installing macstache (i.e. moving the executable to `/usr/local/bin`), you can start macstache on the terminal by calling `macstache`.
+
+## Command Line Parameters
