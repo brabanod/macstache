@@ -46,53 +46,13 @@ macstache needs 3 files as input, in order to compile the result
 
 Options:
 * `-h`: Display help
-* `-ps`: Activates subfolder replacement for partials (see below for more information)
 
 An example command would look like this:
 ```
-macstache -ps source/index.mustache source/index.json build/index.html
-```
-
-
-## Additional features
-I've included some additional features, that I am missing from the original Mustache.
-
-### Partials subfoldering
-Partial subfoldering updates the reference to a partial, by putting the correct path in front of it. Only activated when using `-ps` option.
-
-Say I have the following file tree:
-```
-project
-|
-|__ source
-|   |__ index.mustache
-|   |__ index.json
-|   |__ nav.mustache
-|
-|__ build
-|   |__ index.html
-```
-I am in the `/project` folder and want to compile `index.html` using the following command
-```
 macstache source/index.mustache source/index.json build/index.html
 ```
-For Mustache to work, a reference in `index.html` to the partial needs to look like this
-```
-{{> source/nav}}
-```
-Since this is inconvenient, because it depends on the overlaying directory structure, I would rather have something like this:
-```
-{{> nav}}
-```
-macstache solves this problem by automatically putting the given folder of the template (in this case `/source`) in front of the partial, so you don't need to worry about the current directory structure. Thus converting
-```
-{{> nav}}
-to
-{{> source/nav}}
-```
-or
-```
-{{> sub/folder/nav}}
-to
-{{> source/sub/folder/nav}}
-```
+
+## Directories in macstache
+macstache changes the working directory to the directory, where your template is in. So you don't need to worry, that Mustache partials won't work, when you are calling macstache from a different directory than your template is in
+
+This is particularly useful when working with `make` and you have a folder structure with `source` and `build` folders (see demo for more information).
