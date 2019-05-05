@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['macstache.py'],
-             pathex=['/Users/pascal/Documents/Pyhton/Projekte/macstache'],
+             pathex=['/Users/pascal/Documents/Python/Projekte/macstache'],
              binaries=[],
              datas=[],
              hiddenimports=[],
