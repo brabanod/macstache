@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/pascal/Documents/Pyhton/Projekte/macstache/venv"
+VIRTUAL_ENV="/Users/pascal/Documents/Python/Projekte/macstache/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/pascal/Documents/Pyhton/Projekte/macstache/venv"
+set -gx VIRTUAL_ENV "/Users/pascal/Documents/Python/Projekte/macstache/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
