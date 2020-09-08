@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Mustache",
+        "repositoryURL": "https://github.com/groue/GRMustache.swift",
+        "state": {
+          "branch": null,
+          "revision": "671e2c5234e829c1f337c9d300bd6d9b21d1c42a",
+          "version": "4.0.1"
+        }
+      },
+      {
+        "package": "swift-argument-parser",
+        "repositoryURL": "https://github.com/apple/swift-argument-parser",
+        "state": {
+          "branch": null,
+          "revision": "92646c0cdbaca076c8d3d0207891785b3379cbff",
+          "version": "0.3.1"
+        }
+      },
+      {
+        "package": "Yams",
+        "repositoryURL": "https://github.com/jpsim/Yams.git",
+        "state": {
+          "branch": null,
+          "revision": "88caa2e6fffdbef2e91c2022d038576062042907",
+          "version": "4.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
