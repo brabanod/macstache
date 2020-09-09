@@ -54,7 +54,7 @@ struct macstache: ParsableCommand {
                         }
                     } else {
                         // Only read contents from the file at path
-                        contextData = try extractContents(from: contextPath)
+                        contextData.merge(try extractContents(from: contextPath), uniquingKeysWith: {(_,new) in new})
                     }
                 } else {
                     throw RuntimeError("The path \(contextPath.path) does not exist.")
