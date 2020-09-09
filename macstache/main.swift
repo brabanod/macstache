@@ -82,13 +82,13 @@ struct macstache: ParsableCommand {
     
     func extractContents(from path: URL) throws -> [String: Any] {
         let contents = try String(contentsOf: path, encoding: .utf8)
-        guard let data = contents.data(using: .utf8) else { throw RuntimeError("Couldn't read file \(path.path).") }
-        var dataDictonary: [String: Any]!
+        guard let data = contents.data(using: .utf8) else { throw RuntimeError("Could not read file \(path.path).") }
+        var dataDictonary: [String: Any]?
         
         switch path.pathExtension {
         case "json":
             dataDictonary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-        case "yaml":
+        case "yaml", "yml":
             dataDictonary = try Yams.load(yaml: contents) as? [String: Any]
         case "plist":
             dataDictonary = try! PropertyListSerialization.propertyList(from:data, format: nil) as! [String:Any]
@@ -96,7 +96,11 @@ struct macstache: ParsableCommand {
             throw RuntimeError("Unrecognized context file extension \(path.pathExtension) for \(path.path). Files must be .json, .yaml or .plist.")
         }
         
-        return dataDictonary
+        if dataDictonary == nil {
+            throw RuntimeError("The file at \(path.path) could not be read.")
+        } else {
+            return dataDictonary!
+        }
     }
 }
 
