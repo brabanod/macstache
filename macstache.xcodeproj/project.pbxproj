@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50787D262508EAFC0086EF3C /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 50787D252508EAFC0086EF3C /* Ink */; };
 		50EFA3332507F93A00458BA1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EFA3322507F93A00458BA1 /* main.swift */; };
 		50EFA33B2507F97100458BA1 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 50EFA33A2507F97100458BA1 /* ArgumentParser */; };
 		50EFA33E2507F98200458BA1 /* Mustache in Frameworks */ = {isa = PBXBuildFile; productRef = 50EFA33D2507F98200458BA1 /* Mustache */; };
@@ -36,6 +37,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50EFA33E2507F98200458BA1 /* Mustache in Frameworks */,
+				50787D262508EAFC0086EF3C /* Ink in Frameworks */,
 				50EFA34125082C9300458BA1 /* Yams in Frameworks */,
 				50EFA33B2507F97100458BA1 /* ArgumentParser in Frameworks */,
 			);
@@ -88,6 +90,7 @@
 				50EFA33A2507F97100458BA1 /* ArgumentParser */,
 				50EFA33D2507F98200458BA1 /* Mustache */,
 				50EFA34025082C9300458BA1 /* Yams */,
+				50787D252508EAFC0086EF3C /* Ink */,
 			);
 			productName = macstache;
 			productReference = 50EFA32F2507F93A00458BA1 /* macstache */;
@@ -121,6 +124,7 @@
 				50EFA3392507F97100458BA1 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 				50EFA33C2507F98200458BA1 /* XCRemoteSwiftPackageReference "GRMustache" */,
 				50EFA33F25082C9300458BA1 /* XCRemoteSwiftPackageReference "Yams" */,
+				50787D242508EAFC0086EF3C /* XCRemoteSwiftPackageReference "ink" */,
 			);
 			productRefGroup = 50EFA3302507F93A00458BA1 /* Products */;
 			projectDirPath = "";
@@ -306,6 +310,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		50787D242508EAFC0086EF3C /* XCRemoteSwiftPackageReference "ink" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnsundell/ink.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 		50EFA3392507F97100458BA1 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser";
@@ -333,6 +345,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		50787D252508EAFC0086EF3C /* Ink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50787D242508EAFC0086EF3C /* XCRemoteSwiftPackageReference "ink" */;
+			productName = Ink;
+		};
 		50EFA33A2507F97100458BA1 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 50EFA3392507F97100458BA1 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;

@@ -10,6 +10,7 @@ import Foundation
 import ArgumentParser
 import Yams
 import Mustache
+import Ink
 
 struct macstache: ParsableCommand {
     @Option(name: [.short, .customLong("template")], help: "The .mustache template file.")
@@ -66,6 +67,13 @@ struct macstache: ParsableCommand {
             
             // Create template from templatePath
             let template = try Template(URL: templatePath)
+            
+            // Register additional function
+            let markdownToHtml = Filter { (source: String?) in
+                guard let source = source else { return nil }
+                return MarkdownParser().html(from: source)
+            }
+            template.register(markdownToHtml, forKey: "markdownToHtml")
             
             // Render output
             let output = try template.render(contextData)
