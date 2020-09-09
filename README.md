@@ -33,7 +33,7 @@ After installing macstache (i.e. moving the executable to `/usr/local/bin`), you
 ## Command Line Parameters
 macstache needs 3 parameters as input, in order to compile the result
 * **Template**: This file contains your template with Mustach tags, such as `{{name}}`
-* **Context**: The context or data file is as a `.json`, `.yaml` or `.plist` file. This can be one or multiple files or you give it a directory, which will collect all the files from this directory and its subdirectories. If multiple files are used, they are combined to one large context to be used for the template.
+* **Context**: The context or data file is as a `.json`, `.yaml` or `.plist` file. This can be one or multiple files or you give it a directory, which will collect all the files from this directory and its subdirectories. If multiple files are used, they are combined to one large context to be used for the template. The files are parsed in the same order, in which they are given to macstache, so when files have the same keys, the current key-value-pair overrides the previous key-value-pair.
 * **Output**: Specify the location, to where macstache should save the compiled output
 
 Options:
