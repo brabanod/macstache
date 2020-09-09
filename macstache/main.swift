@@ -45,7 +45,7 @@ struct macstache: ParsableCommand {
                                     let fileAttributes = try fileURL.resourceValues(forKeys:[.isRegularFileKey])
                                     if fileAttributes.isRegularFile! {
                                         // Read contents and join them to one combined dictionary
-                                        contextData.merge(try extractContents(from: fileURL), uniquingKeysWith: {(current,_) in current})
+                                        contextData.merge(try extractContents(from: fileURL), uniquingKeysWith: {(_,new) in new})
                                     }
                                 } catch {
                                     print(error, fileURL)
