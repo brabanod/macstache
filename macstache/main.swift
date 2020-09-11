@@ -75,6 +75,9 @@ struct macstache: ParsableCommand {
             }
             template.register(markdownToHtml, forKey: "markdownToHtml")
             
+            template.register(StandardLibrary.each, forKey: "each")
+            template.register(StandardLibrary.zip, forKey: "zip")
+            
             // Render output
             let output = try template.render(contextData)
             
