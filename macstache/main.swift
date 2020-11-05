@@ -96,6 +96,9 @@ struct macstache: ParsableCommand {
         guard let data = contents.data(using: .utf8) else { throw RuntimeError("Could not read file \(path.path).") }
         var dataDictonary: [String: Any]?
         
+        // Return empty dict if file is empty
+        guard contents != "" else { return [String: Any]() }
+        
         switch path.pathExtension {
         case "json":
             dataDictonary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
