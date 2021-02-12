@@ -19,14 +19,14 @@ struct macstache: ParsableCommand {
     @Option(name: [.short, .customLong("context")], parsing: .upToNextOption, help: "One/Multiple .json or .yaml file containing the context for the texmplate. If one (or more) folder is given, all .json and .yaml files from that folder will be used.")
     var contextFiles: [String]
     
-    @Option(name: [.short, .customLong("output")], help: "Name of the generated output file.", completion: nil)
-    var outputFile: String
+    @Option(name: [.short, .customLong("output")], help: "Write the generated output to this file. If unspecified, macstache prints to stdout.", completion: nil)
+    var outputFile: String?
     
     
     mutating func run() throws {
         let templatePath = templateFile.toURL()
         let contextPaths = contextFiles.map({ $0.toURL() })
-        let outputPath = outputFile.toURL()
+        let outputPath = outputFile?.toURL()
         
         var contextData = [String: Any]()
         
@@ -83,7 +83,12 @@ struct macstache: ParsableCommand {
             
             
             // Write Output
-            try output.write(to: outputPath, atomically: false, encoding: .utf8)
+            if outputPath != nil {
+                try output.write(to: outputPath!, atomically: false, encoding: .utf8)
+            } else {
+                print(output)
+            }
+            
             
         } catch let error {
             Self.exit(withError: error)
