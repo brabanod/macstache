@@ -1,6 +1,6 @@
 <br></br>
 <p align="center">
-  <img src="https://github.com/columbbus/macstache/blob/master/resources/macstache.png?raw=true" alt="macstache" width="400"/>
+  <img src="https://github.com/brabanod/macstache/blob/master/resources/macstache.png?raw=true" alt="macstache" width="400"/>
 </p>
 <br></br>
 
@@ -15,7 +15,7 @@ A [Mustache](https://mustache.github.io) command line tool implementation for Ma
 ## Pre-Build
 If you only want the command line tool, go to `dist` folder and grab the `macstache` executable. Copy it to a folder, which is part of your `$PATH`, for example `usr/local/bin`. The following commands should install macstache on macOS
 ```
-git clone https://github.com/columbbus/macstache.git
+git clone https://github.com/brabanod/macstache.git
 sudo cp macstache/dist/macstache /usr/local/bin/macstache
 ```
 After that, just use the tool by calling `macstache` in the terminal.
